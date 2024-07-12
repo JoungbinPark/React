@@ -1,0 +1,93 @@
+body{  display:flex; justify-content: center; }
+.login{ width:650px; border:1px solid blue; border-radius: 10px; margin-top:150px; }
+#login-form{   padding:20px; }
+
+#login-form .field{ 
+    display: flex; margin:10px 10px; align-items: center; 
+}
+#login-form .field label{ 
+    flex:1; font-weight: bold; font-size: 0.8rem;
+}
+#login-form .field input{ 
+    flex:3; font-size: 1.2rem;
+}
+
+#login-form .btns{
+    display: flex;
+}
+#login-form .btns button, .btns input{
+    flex:1; margin:3px; background-color: blue; color:white; border-radius: 3px; height:30px;
+}
+
+.loginuser{ width:100%; border:1px solid blue; margin:1px; display: flex;}
+.loginuser button:last-child{ margin-left:auto; }
+
+.main{width: 800px; border: 1px solid red; margin: 0 auto; display: flex; flex-direction: column;}
+
+
+.boardList{ width:100%; border:1px solid blue; margin:10px 1px; display: flex; flex-direction: column;}
+
+.titlerow{ flex:1; display: flex; }
+.titlecol{ margin:1px; background-color: rgb(44, 247, 247); border-radius: 5px; height:60px; text-align: center; line-height: 60px;}
+.titlecol:nth-child(1){flex:1;}
+.titlecol:nth-child(2){flex:4;}
+.titlecol:nth-child(3){flex:1;}
+.titlecol:nth-child(4){flex:1;}
+.titlecol:nth-child(5){flex:1;}
+
+.row{ flex:1; display: flex; }
+.col{ margin:1px; border:1px dotted blue; border-radius: 5px; height:80px; text-align: center; line-height: 45px; display:flex; align-items:center; justify-content: center;}
+.col:nth-child(1){flex:1;}
+.col:nth-child(2){flex:4; justify-content:flex-start; padding-left : 20px; }
+.col:nth-child(3){flex:1;}
+.col:nth-child(4){flex:1;}
+.col:nth-child(5){flex:1;}
+
+.writeBoard, .boardView{ border:2px solid rgb(137, 137, 231); border-radius: 20px; width:800px; display: flex; flex-direction: column; align-items: center; padding:20px; box-sizing: border-box;}
+.writeBoard .field, .boardView .field{ 
+    display: flex; margin:10px 10px; align-items: center; width:95%;
+}
+.writeBoard .field label , .boardView .field label{ 
+    flex:1; font-weight: bold; font-size: 0.8rem;
+}
+.writeBoard .field input , .writeBoard .field textarea, .writeBoard .field div, 
+ .boardView .field div{ 
+    flex:3; font-size: 1.0rem;
+}
+.writeBoard .btns,.boardView .btns {
+    display: flex; width:95%; 
+}
+.writeBoard .btns button, .btns input, .boardView .btns button, .btns input{
+    flex:1; margin:3px; background-color: blue; color:white; border-radius: 3px; height:30px;
+}
+
+
+
+.head-row{ display: flex; width:100%}
+
+.head-col{ display: flex; background-color: rgb(147, 147, 247); margin:1px; border-radius: 3px; height:30px; color:white; justify-content: center; align-items: center;}
+.head-col:nth-child(1){ flex:2;}
+.head-col:nth-child(2){ flex:1;}
+.head-col:nth-child(3){ flex:7;}
+.head-col:nth-child(4){ flex:2;}
+
+.new-reply-row{ display: flex; width:100%}
+.new-reply-col{ display: flex; border:1px dotted rgb(192, 192, 241); margin:1px; border-radius: 3px; height:30px; justify-content: center; align-items: center;}
+.new-reply-col:nth-child(1){ flex:2;}
+.new-reply-col:nth-child(2){ flex:1;}
+.new-reply-col:nth-child(3){ flex:7; justify-content: flex-start; padding-left:5px;}
+.new-reply-col:nth-child(3) input{width:100%;}
+.new-reply-col:nth-child(4){ flex:2;}
+
+
+
+@media (max-width:767px){
+    .btns, .field{ flex-direction: column; }
+    .field { align-items: flex-start; }
+    .field input{ margin:10px 0; width:100%; }
+    button{margin:10px 0; width:100%;}
+    .main{ width:95%; }
+    .writeBoard{width:95vw;}
+    .writeBoard .field { align-items: flex-start; }
+    textarea{ width:100% }
+}
