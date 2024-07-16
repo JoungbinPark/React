@@ -127,9 +127,50 @@ router.get('/kakao/callback',
     }
 );
 
-router.get('/getLoginUser', (req, res)=>{
-    res.send({loginUser:req.user});
+router.get('/getLoginUser', async (req, res)=>{
+    try{
+        const connection = await getConnection();
+        let sql = 'select * from follow where ffrom=?'
+        let [rows, fields] = await connection.query(sql, [req.user.nickname]);
+        //ffrom 에서 로그인 유저 닉네임을 검색하고, 검색결과 fto를 정리해서 배열로 변환
+        let followings = (rows.length>=1)?rows.map((f)=>{f.fto}):[];
 
+        sql = 'select * from follow where fto=?';
+        let [rows2, fields2] = await connection.query(sql, [req.user.nickname]);
+        let followers = (rows2.length>=1)? rows2.map((f)=>{f.ffrom}):[];
+        res.send({loginUser:req.user, followings, followers})
+    }catch(err){console.error(err)}
 } )
 
+router.get('/logout', (req,res)=>{
+    req.session.destroy();
+    res.send('ok')
+});
+
+router.get('/getFollowings', async(req, res)=>{
+    try{
+        const connection = await getConnection();
+        let sql = "select * from follow where ffrom=?";
+        let [rows, fields] = await connection.query(sql, [req.user.nickname]);
+        // ffrom 에서 로그인 유저닉네임을 검색하고, 검색결과 fto들을 정리해서 배열로 전환
+        let followings = (rows.length>=1)? rows.map((f)=>(f.fto)):[];
+        res.send(followings);
+    }catch(err){
+        console.error(err);
+    }
+});
+
+
+
+router.post('/follow', async (req,res)=>{
+    const {ffrom, fto} = req.body;
+    try{
+        const connection = await getConnection();
+        let sql = 'insert into follow(ffrom, fto) values(?,?)';
+        let [rows, fields] = await connection.query(sql, [ffrom, fto]);
+        let F
+        res.send('ok');
+
+    }catch(err){console.error(err)}
+})
 module.exports = router;

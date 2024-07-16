@@ -30,6 +30,9 @@ app.use(passport.session());
 const memberRouter = require('./routers/member');
 app.use('/member', memberRouter);
 
+const postRouter = require('./routers/post');
+app.use('/post', postRouter);
+
 app.get('/', (req,res)=>{res.send('<h1>MystarGram</h1>')})
 
 app.listen(app.get('port'), ()=>{console.log(app.get('port'), 'port Server Open...')});
